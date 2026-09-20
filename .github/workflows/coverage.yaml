@@ -24,6 +24,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Check coverage threshold (>= 85%)
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           pytest --cov=src --cov-fail-under=85 --cov-report=term-missing | tee coverage.txt
 
